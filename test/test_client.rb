@@ -24,7 +24,7 @@ describe 'Initializing a Client' do
   it 'should set user and password from login url' do
     agent = mock('mechanize')
     agent.expects(:auth).with('user', 'pass')
-    WWW::Mechanize.expects(:new).returns(agent)
+    Mechanize.expects(:new).returns(agent)
     Rechanize::Client.new(EXAMPLE_URL).agent.should.equal agent
   end
 
@@ -42,7 +42,7 @@ describe 'Initializing a Client' do
   it 'should set user and password from options' do
     agent = mock('mechanize')
     agent.expects(:auth).with('user', 'pass')
-    WWW::Mechanize.expects(:new).returns(agent)
+    Mechanize.expects(:new).returns(agent)
     client = Rechanize::Client.new('http://host.com/login_path', :user => 'user', :password => 'pass')
     client.agent.should.equal agent
   end

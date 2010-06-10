@@ -26,7 +26,7 @@ module Rechanize
   
     def agent
       if @agent.nil?
-        @agent = WWW::Mechanize.new
+        @agent = Mechanize.new
         @agent.auth(@user, @password)
       end
 
