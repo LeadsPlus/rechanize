@@ -34,6 +34,19 @@ describe 'Initializing a Client' do
     client.user.should.equal uri.user
   end
 
+  it 'should take an explicit user' do
+    client = Rechanize::Client.new('http://host.com/login_path', :user => 'user')
+    client.user.should.equal 'user'
+  end
+
+  it 'should set user and password from options' do
+    agent = mock('mechanize')
+    agent.expects(:auth).with('user', 'pass')
+    WWW::Mechanize.expects(:new).returns(agent)
+    client = Rechanize::Client.new('http://host.com/login_path', :user => 'user', :password => 'pass')
+    client.agent.should.equal agent
+  end
+
 end
 
 describe 'Authenticating a Client' do

@@ -17,6 +17,8 @@ module Rechanize
 
       @paths = {}
       @login_url = URI.parse(login_url)
+      @user = opts[:user] ? opts[:user] : @login_url.user
+      @password = opts[:password] ? opts[:password] : @login_url.password
       @logger = Logger.new(opts[:logger]) if opts[:logger]
 
       return
@@ -25,7 +27,7 @@ module Rechanize
     def agent
       if @agent.nil?
         @agent = WWW::Mechanize.new
-        @agent.auth(@login_url.user, @login_url.password)
+        @agent.auth(@user, @password)
       end
 
       @agent
@@ -40,7 +42,7 @@ module Rechanize
     end
 
     def user
-      @login_url.user
+      @user
     end
 
     def scheme
