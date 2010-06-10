@@ -13,7 +13,7 @@ module Rechanize
 
     # Set everything up for delicious fun
     def initialize(login_url, options={})
-      opts = options.reverse_merge({:logger => STDOUT})
+      opts = {:logger => STDOUT}.merge(options)
 
       @paths = {}
       @login_url = URI.parse(login_url)
