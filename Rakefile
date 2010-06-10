@@ -1,9 +1,7 @@
-require 'lib/rechanize'
-
-desc "Run the tests for rechanize"
-task :test do
-  # TODO Is there a non-absolute path way to do this??
-  # ruby "/usr/bin/bacon -Q -a"
-  ruby "/usr/bin/bacon -a"
+require 'rake/testtask'
+task :default => :test
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
 end
-

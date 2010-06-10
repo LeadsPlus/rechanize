@@ -1,3 +1,4 @@
+require File.expand_path('../helper.rb', __FILE__)
 require 'rechanize/array'
 
 describe 'Converting an array to a hash' do

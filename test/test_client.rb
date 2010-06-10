@@ -1,3 +1,4 @@
+require File.expand_path('../helper.rb', __FILE__)
 require 'test/mocha_on_bacon'
 require 'rechanize/client'
 
