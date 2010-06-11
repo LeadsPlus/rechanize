@@ -179,7 +179,7 @@ module Rechanize
     # when searching to find this in a totally different place.
     # Name recomendations?
     def parse_paths(data, key = "RETS-RESPONSE")
-      sets = data[key].multisplit("\n", "=")
+      sets = data[key].multisplit("\n", "=").map {|a| a.map(&:strip) }
       sets = sets.select { |k, v| method_known?(k) }
       sets.to_hash
     end

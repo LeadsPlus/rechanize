@@ -183,6 +183,14 @@ describe 'Parsing Paths' do
     client.send(:parse_paths, data).should.equal expected
   end
 
+  it 'should handle extra spaces' do
+    client = Rechanize::Client.new(EXAMPLE_URL)
+    client.stubs(:method_known?).returns(true)
+    data = {"RETS-RESPONSE" => "R = 2\nD=2"}
+    expected = {"R" => "2", "D" => "2"}
+    client.send(:parse_paths, data).should.equal expected
+  end
+
 end
 
 describe 'Parising XML' do
